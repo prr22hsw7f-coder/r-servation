@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation de créneaux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #666;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #confirmation {
+            margin-top: 15px;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Réservation</h2>
+        <form id="reservationForm">
+            <label for="name">Votre nom :</label>
+            <input type="text" id="name" required placeholder="Ex: Jean Dupont">
+
+            <label for="slot">Choisissez un créneau :</label>
+            <select id="slot" required>
+                <option value="">-- Sélectionnez --</option>
+                <option value="14h00 - 14h30">14h00 - 14h30</option>
+                <option value="14h30 - 15h00">14h30 - 15h00</option>
+                <option value="15h00 - 15h30">15h00 - 15h30</option>
+                <option value="15h30 - 16h00">15h30 - 16h00</option>
+            </select>
+
+            <button type="submit">Valider la réservation</button>
+        </form>
+        <div id="confirmation"></div>
+    </div>
+
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const slot = document.getElementById('slot').value;
+            
+            document.getElementById('confirmation').innerText = `Merci ${name}, votre créneau (${slot}) a bien été pris en compte !`;
+            document.getElementById('reservationForm').reset();
+        });
+    </script>
+
+</body>
+</html>
